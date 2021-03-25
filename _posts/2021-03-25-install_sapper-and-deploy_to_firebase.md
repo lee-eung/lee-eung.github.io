@@ -2,11 +2,11 @@
 layout: single
 title: "sapper 설치 및 firebase 배포 절차"
 ---
-아래 내용은 sapper를 설치하고 firebase에 배포하는 절차를 간략하게 정리한 것입니다.
+아래 내용은 sapper를 설치하고 [firebase](https://firebase.google.com/)에 배포하는 절차를 간략하게 정리한 것입니다.
 
-Sapper는 Svelte.js로 웹앱을 손쉽게 만들 수 있게 해주는 프레임워크인데요. 공식적으론 "a framework for building extremely high-performance web apps"라고 합니다. 아무튼 sapper 설치 후 firebase에 배포하면 곧바로 자신만의 가볍고 빠른 동적 웹사이트가 생겨납니다. 
+[Sapper](https://sapper.svelte.dev/)는 Svelte.js로 웹앱을 손쉽게 만들 수 있게 해주는 프레임워크인데요. 공식적으론 "[a framework for building extremely high-performance web apps](https://sapper.svelte.dev/docs/#What_is_Sapper)"라고 합니다. 아무튼 sapper 설치 후 firebase에 배포하면 곧바로 자신만의 가볍고 빠른 동적 웹사이트가 생겨납니다. 
 
-Svelte.js는 프론트엔드 프레임워크 중엔 가장 가볍고 빠르면서 코드 역시 간결하기로 타의 추종을 불허하는데요. 지금은 비록 인지도가 낮지만, 장차 압도적인 인기를 얻게 되리라 확신합니다.
+[Svelte.js](https://svelte.dev/)는 프론트엔드 프레임워크 중엔 가장 가볍고 빠르면서 코드 역시 간결하기로 타의 추종을 불허하는데요. 지금은 비록 인지도가 낮지만, 장차 압도적인 인기를 얻게 되리라 확신합니다.
 
 아래 내용은 bash에서 실행할 명령 위주로 정리한 것이고, 각 명령줄에 대한 코멘트는 선택적으로 괄호 안에 아주 간략하게 적어뒀습니다. 나중에 sapper로 또 다른 웹앱을 만들 때 이거 보고 그대로 진행하려고 정리한 건데요. 이 절차대로 해보면 웬만해선 별 문제없이 배포까지 될 겁니다.
 
