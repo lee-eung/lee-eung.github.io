@@ -23,7 +23,7 @@ name                     : "Lee Eung"
 description              : "리응의 개발 블로그"
 url                      : "https://lee-eung.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : #"lee-eung/lee-eung.github.io"
+repository               : "lee-eung/lee-eung.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : "/assets/images/logo_squre.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
@@ -97,7 +97,7 @@ author:
   name             : "Lee Eung"
   avatar           : "/assets/images/logo_squre.png"
   bio              : "I am an **polymath**."
-  location         : "South Korea"
+  location         : "Paju, Korea"
   email            :
   links:
     - label: "Email"
@@ -130,7 +130,7 @@ footer:
       # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url:
+      url: "https://github.com/lee-eung"
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
       # url:
@@ -277,6 +277,6 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: # true
+      comments: true
       share: true
       related: true
