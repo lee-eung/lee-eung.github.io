@@ -19,7 +19,7 @@ locale                   : "ko-KR"
 title                    : "Lee Eung Dev."
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Lee Eung"
+name                     : "Lee Eung Dev"
 description              : "리응의 개발 블로그"
 url                      : "https://lee-eung.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
