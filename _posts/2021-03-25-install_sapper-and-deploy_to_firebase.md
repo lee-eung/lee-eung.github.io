@@ -11,12 +11,12 @@ title: "sapper 설치 및 firebase 배포 절차"
 아래 내용은 bash에서 실행할 명령 위주로 정리한 것이고, 각 명령줄에 대한 코멘트는 선택적으로 괄호 안에 아주 간략하게 적어뒀습니다. 나중에 sapper로 또 다른 웹앱을 만들 때 이거 보고 그대로 진행하려고 정리한 건데요. 이 절차대로 해보면 웬만해선 별 문제없이 배포까지 될 겁니다.
 
 ```bash
-1. $ npx degit "sveltejs/sapper-template#rollup" sapper_firebase_v3
-2. $ cd sapper_firebase_v3
+1. $ npx degit "sveltejs/sapper-template#rollup" sapper_firebase
+2. $ cd sapper_firebase
 3. $ git init
 4. $ git commit (sapper 템플릿 설치)
 5. github에서 repository 신규 생성 (프로젝트명과 동일하게)
-6. $ git remote add origin https://github.com/lee-eung/sapper_firebase_v3.git
+6. $ git remote add origin https://github.com/lee-eung/sapper_firebase.git
 7. $ git push -u origin master 
 8. $ npm install
 9. $ npm run dev (로컬 3000포트로 페이지 잘 열리는지 확인)
@@ -42,8 +42,8 @@ title: "sapper 설치 및 firebase 배포 절차"
 초간단 버전:
 
 ```bash
-1. $ npx degit "sveltejs/sapper-template#rollup" sapper_firebase_v3
-2. $ cd sapper_firebase_v3 && npm install
+1. $ npx degit "sveltejs/sapper-template#rollup" sapper_firebase
+2. $ cd sapper_firebase && npm install
 3. $ firebase init
     ? Which Firebase CLI features ... ? Hosting 선택
     ? Please select an option: "Create a new project" 선택
@@ -66,4 +66,4 @@ title: "sapper 설치 및 firebase 배포 절차"
 $ npx sapper dev
 ```
 
-[Sapper 프로젝트 템플릿](https://sapper-firebase-ver3.web.app/)
+<a href="https://sapper-firebase-ver3.web.app/" target="_blank">Sapper로 만든 웹앱</a>
