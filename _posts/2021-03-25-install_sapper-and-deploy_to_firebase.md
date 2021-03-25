@@ -2,7 +2,7 @@
 layout: single
 title: "sapper 설치 및 firebase 배포 절차"
 ---
-아래 내용은 sapper를 설치하고 [firebase](https://firebase.google.com/)에 배포하는 절차를 간략하게 정리한 것입니다.
+아래 내용은 sapper를 설치하고 %md <a href="https://firebase.google.com/" target="_blank">firebase</a>에 배포하는 절차를 간략하게 정리한 것입니다.
 
 [Sapper](https://sapper.svelte.dev/)는 Svelte.js로 웹앱을 손쉽게 만들 수 있게 해주는 프레임워크인데요. 공식적으론 "[a framework for building extremely high-performance web apps](https://sapper.svelte.dev/docs/#What_is_Sapper)"라고 합니다. 아무튼 sapper 설치 후 firebase에 배포하면 곧바로 자신만의 가볍고 빠른 동적 웹사이트가 생겨납니다. 
 
