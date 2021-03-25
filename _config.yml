@@ -25,7 +25,7 @@ url                      : "https://lee-eung.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "lee-eung/lee-eung.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : "/assets/images/logo_squre.png"
+logo                     : "/assets/images/logo_circle.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
