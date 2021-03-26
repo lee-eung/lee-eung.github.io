@@ -51,7 +51,7 @@ export const wordList = ['나물비빔밥', '오곡밥', '잡채밥', '콩나물
     let inputText = ''; // 검색어 입력란에서 글자를 받아내는 변수입니다.
 
     function matchedWords( searchText ) { // 검색어가 음소단위로 입력될 때마다 호출되는 함수입니다.
-        let searcher = new Hangul.Searcher(searchText); // 함수가 호출되면 일단 검색어를 음소단위로 분리해놓습니다.
+        let searcher = new Hangul.Searcher(searchText); // 함수가 호출되면 일단 검색어 문자열을 음소단위로 분리해놓습니다.
         let output = [];    // 검색어가 포함된 단어들을 담아낼 배열 변수입니다.
         let search_v = -1;  // 검색 대상 단어에 검색어의 위치값을 담아두는 변수이며, default -1은 검색어가 포함되어 있지 않다는 의미입니다.
         wordList.forEach( word => { // 검색 대상 단어들을 하나씩 확인합니다.
@@ -112,9 +112,11 @@ export const wordList = ['나물비빔밥', '오곡밥', '잡채밥', '콩나물
 </div>
 ```
 
-이렇게 만들어진 한글 검색어 자동완성 컴포넌트는 한글 검색 기능이 필요한 어디서든 사용할 수 있습니다. Svelte 특유의 간결함 덕분에 소스코드를 이해하기 어렵지 않을 거라 생각합니다. `<script>` 영역은 그냥 일반적인 바닐라 자바스크립트 코드이고, Svelte만의 로직은 `<div class="content">` 영역에 HTML 태그와 함께 있는 코드가 전부입니다. 
+이렇게 만들어진 한글 검색어 자동완성 컴포넌트는 한글 검색 기능이 필요한 어디서든 사용할 수 있습니다. Svelte 특유의 간결함 덕분에 소스코드를 이해하기 어렵지 않을 거라 생각합니다. `<script>` 영역은 그냥 일반적인 바닐라 자바스크립트 코드이고, Svelte만의 syntax는 `<div class="content">` 영역에 HTML 태그와 함께 있는 코드가 전부입니다. 
 
-`<input bind:value={inputText}>` 여기서 `bind:value={inputText}` 요부분이 Svelte만의 로직인데요. HTML의 `<input>`태그로 만들어진 입력란에서 글자를 타이핑하면, 그 검색어 문자열이 `inputText` 변수에 바인딩된다는 뜻입니다. vue에선 한글 입력시 커서가 위치한 음소나 음절이 바인딩되지 않는 문제가 있다보니 <a href="https://github.com/whdckszxxx/vue-korean-autocomplete" target="_blank">vue-korean-autocomplete</a>에서 구현한 것처럼 키를 누르고 있는 상태에서도 입력한 음소나 음절을 바인딩하기 위한 코드가 복잡하게 들어가야 하는데요. svelte에선 이런 작업이 필요 없습니다. 제가 이래서 svelte를 더욱 선호하는 건데요. svelte에선 한글 입력시 커서가 위치한 음소나 음절도 정확하게 바인딩되기 때문에 `bind:value={inputText}` 이거만으로도 한글 문자열을 알파벳 다루듯 처리할 수 있습니다.
+`<input bind:value={inputText}>` 여기서 `bind:value={inputText}` 요부분이 Svelte만의 syntax인데요. HTML의 `<input>`태그로 만들어진 입력란에서 글자를 타이핑하면, 그 검색어 문자열이 `inputText` 변수에 바인딩된다는 뜻입니다.
+
+vue에선 한글 입력시 커서가 위치한 음소나 음절이 바인딩되지 않는 문제가 있다보니 <a href="https://github.com/whdckszxxx/vue-korean-autocomplete" target="_blank">vue-korean-autocomplete</a>에서 구현한 것처럼 키를 누르고 있는 상태에서도 입력한 음소나 음절을 바인딩하기 위한 코드가 복잡하게 들어가야 하는데요. svelte에선 이런 작업이 필요 없습니다. svelte에선 virtual DOM을 사용하지 않아서 한글 입력시 커서가 위치한 음소나 음절도 정확하게 바인딩되기 때문에 `bind:value={inputText}` 이거만으로도 한글 문자열을 알파벳 다루듯 처리할 수 있습니다. (이래서 svelte를 사랑하지 않을 수 없네요!)
 
 `{#each matchedWords(inputText) as matched_word} ... {/each}` 이 코드도 Svelte만의 로직인데요. 바닐라 자바스크립트라면 `for (const matched_word in matchedWords(inputText)) { ... }` 이렇게 되겠죠. `{@html makeBold(matched_word.text)}` 이 코드는 검색된 문자열에서 검색어의 음소/음절 부분에 강조 표시한 결과를 화면에 표시하되, 강조 표시로 사용된 HTML 태그를 랜더링하기 위해 `@html`가 사용되었습니다.
 
