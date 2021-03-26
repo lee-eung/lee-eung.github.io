@@ -17,3 +17,4 @@ title: "Svelte로 한글 검색어 자동완성 구현하기"
 ```bash
 $ npx sapper dev
 ```
+<a href="https://lee-eung.github.io/svelte/korean-autocomp/" target="_blank">Svelte로 만든 한글 검색어 자동완성 페이지</a>
