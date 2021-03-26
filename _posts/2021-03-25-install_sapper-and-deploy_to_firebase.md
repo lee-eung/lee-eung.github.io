@@ -4,7 +4,7 @@ title: "sapper 설치 및 firebase 배포 절차"
 ---
 아래 내용은 sapper를 설치하고 <a href="https://firebase.google.com/" target="_blank">firebase</a>에 배포하는 절차를 간략하게 정리한 것입니다.
 
-<a href="https://sapper.svelte.dev/" target="_blank">Sapper</a>는 Svelte.js로 웹앱을 손쉽게 만들 수 있게 해주는 프레임워크인데요. 공식적으론 "<a href="https://sapper.svelte.dev/docs/#What_is_Sapper" target="_blank">a framework for building extremely high-performance web apps</a>"라고 합니다. 아무튼 sapper 설치 후 firebase에 배포하면 곧바로 자신만의 가볍고 빠른 동적 웹사이트가 생겨납니다. 
+<a href="https://sapper.svelte.dev/" target="_blank">Sapper</a>는 Svelte.js로 웹앱 제작을 손쉽게 해주는 프레임워크인데요. 공식적으론 "<a href="https://sapper.svelte.dev/docs/#What_is_Sapper" target="_blank">a framework for building extremely high-performance web apps</a>"라고 합니다. 아무튼 sapper 설치 후 firebase에 배포하면 곧바로 자신만의 가볍고 빠른 웹앱이 생겨납니다.
 
 <a href="https://svelte.dev/" target="_blank">Svelte.js</a>는 프론트엔드 프레임워크 중엔 가장 가볍고 빠르면서 코드 역시 간결하기로 타의 추종을 불허하는데요. 지금은 비록 인지도가 낮지만, 장차 압도적인 인기를 얻게 되리라 확신합니다.
 
@@ -40,14 +40,13 @@ title: "sapper 설치 및 firebase 배포 절차"
 ```
 
 초간단 버전:
-
 ```bash
 1. $ npx degit "sveltejs/sapper-template#rollup" sapper_firebase
 2. $ cd sapper_firebase && npm install
 3. $ firebase init
     ? Which Firebase CLI features ... ? Hosting 선택
     ? Please select an option: "Create a new project" 선택
-    ? Please specify a unique project id: sapper-firebase-ver3 (자신이 원하는 유니크할만한 명칭으로)
+    ? Please specify a unique project id: sapper-firebase (자신이 원하는 유니크할만한 명칭으로)
     ? What would you like to call your project? 그냥 엔터치면 'defaults to your project ID'
     ? What do you want to use as your public directory? dist
     ? Configure as a single-page app (rewrite all urls to /index.html)? No
@@ -61,7 +60,6 @@ title: "sapper 설치 및 firebase 배포 절차"
 ```
 
 로컬 테스트:
-
 ```bash
 $ npx sapper dev
 ```
