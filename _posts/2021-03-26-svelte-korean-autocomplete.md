@@ -118,7 +118,7 @@ export const wordList = ['나물비빔밥', '오곡밥', '잡채밥', '콩나물
 
 vue에선 <a href="https://webruden.tistory.com/485" target="_blank">한글 입력시 커서가 위치한 음소나 음절이 바인딩되지 않는 문제</a>가 있다보니 <a href="https://github.com/whdckszxxx/vue-korean-autocomplete" target="_blank">vue-korean-autocomplete</a>에서 구현한 것처럼 키를 누르고 있는 상태에서도 입력한 음소나 음절을 바인딩하기 위한 코드가 복잡하게 들어가기도 하는데요. <a href="https://webruden.tistory.com/485" target="_blank">여기</a>에선 비교적 간단하게 해결하던데 코드의 복잡성 차이가 이렇게 크게 발생하는 자세한 이유까진 살펴보지 않았지만, 아무튼 svelte에선 어떤 추가 작업도 필요 없습니다. svelte에선 virtual DOM을 사용하지 않아서 한글 입력시 커서가 위치한 음소나 음절도 정확하게 바인딩되기 때문에 `bind:value={inputText}` 이거만으로도 한글 문자열을 알파벳 다루듯 처리할 수 있습니다.
 
-`{#each matchedWords(inputText) as matched_word} ... {/each}` 이 코드도 Svelte만의 로직인데요. 바닐라 자바스크립트라면 `for (const matched_word in matchedWords(inputText)) { ... }` 이렇게 되겠죠. `{@html makeBold(matched_word.text)}` 이 코드는 검색된 문자열에서 검색어의 음소/음절 부분에 강조 표시한 결과를 화면에 표시하되, 강조 표시로 사용된 HTML 태그를 랜더링하기 위해 `@html`가 사용되었습니다.
+`{#each matchedWords(inputText) as matched_word} ... {/each}` 이 코드도 Svelte만의 로직인데요. 바닐라 자바스크립트라면 `for (const matched_word in matchedWords(inputText)) { ... }` 이렇게 되겠죠. `{@html makeBold(matched_word.text)}` 이 코드는 검색된 문자열에서 검색어의 음소/음절 부분에 강조 표시한 결과를 화면에 표시하되, 강조 표시로 사용된 HTML 태그를 랜더링하기 위해 `@html`이 사용되었습니다.
 
 `<style>` 영역에 있는 css는 딱히 어려울 게 없을 듯한데요. `#search_div`는 화면 스크롤시 상단에 고정되도록 하는 css가 작성된 것이고, `input`는 입력란 너비가 화면에 꽉 차게 하는 css입니다. svelte에선 각 컴포넌트의 `<style>` 지정이 해당 컴포넌트의 HTML 태그에만 반영되기 때문에, `input` 이렇게 특정 태그 자체에 스타일 지정하더라도 다른 컴포넌트의 `input`에는 전혀 영향을 주지 않습니다. svelte 컴포넌트의 HTML 코드가 복잡하지 않다면 그냥 심플하게 태그 자체에 스타일을 지정할 수 있어서 HTML 코드가 아주 간결해지고 스타일 지정이 그만큼 간편해집니다.
 
