@@ -8,12 +8,16 @@ Svelte로 구현된 검색어 자동완성(autocomplete) 관련 자료를 찾아
 - <a href="https://svelte.dev/repl/c7094fb1004b440482d2a88f4d1d7ef5?version=3.14.0" target="_blank">MultiSelect • REPL • Svelte</a>
 - <a href="https://metonym.github.io/svelte-typeahead/" target="_blank">svelte-typeahead</a>
 
-알파벳으로 이루어진 단어 검색을 위한 거라면 그냥 얘네들 중 하나를 골라서 쓰면 될텐데요. 한글 검색어를 대상으로 자동완성을 구현하려면, 한글의 초성/중성/종성을 처리해주는 로직이 필요합니다. 물론 알파벳 자동완성 로직에서도 한글 검색어 자동완성이 미흡하나마 되긴 합니다만, 한글 검색어 입력할 때 아직 음절이 되지 못하고 음소 상태로 있을 땐 검색 결과가 항상 0으로 나오는 문제가 있습니다. <a href="https://bluewings.github.io/unobstructed-hangul-regular-expression/" target="_blank">여기</a>에서 그 문제를 해결해주고 있긴 한데요. 정규식을 이용한 방법으로 나름 참신하게 접근하긴 했습니다만, "모든 경우에 적용 가능한 정규식은 만들 수 없었"다고 한 게 좀 그래서 저는 "<a href="https://github.com/e-/Hangul.js" target="_blank">Hangul.js</a>" 라이브러리는 쓰기로 했습니다. `Hangul.js` 라이브러리를 쓰면 모든 경우에 적용 가능한 한글 검색어 자동완성을 구현할 수 있거든요.
+알파벳으로 이루어진 단어 검색을 위한 거라면 그냥 얘네들 중 하나를 골라 쓰면 될텐데요. 한글 검색어를 대상으로 자동완성을 구현하려면, 한글의 초성/중성/종성을 처리해주는 로직이 필요합니다.
+
+물론 알파벳 자동완성 로직에서도 한글 검색어 자동완성이 미흡하나마 되긴 합니다만, 한글 검색어 입력할 때 아직 음절이 되지 못하고 음소 상태로 있을 땐 검색 결과가 항상 0으로 나오는 문제가 있습니다.
+
+<a href="https://bluewings.github.io/unobstructed-hangul-regular-expression/" target="_blank">여기</a>에서 그 문제를 해결해주고 있긴 한데요. 정규식을 이용한 방법으로 나름 참신하게 접근하긴 했습니다만, "모든 경우에 적용 가능한 정규식은 만들 수 없었다"고 한 게 좀 그래서 저는 그냥 "<a href="https://github.com/e-/Hangul.js" target="_blank">Hangul.js</a>" 라이브러리를 쓰기로 했습니다. `Hangul.js` 라이브러리를 쓰면 모든 경우에 적용 가능한 한글 검색어 자동완성을 구현할 수 있거든요.
 
 한글 검색어 자동완성 관련해서 다른 자료가 필요한 분은 아래 링크들을 참고하시면 됩니다.
 - <a href="https://bluewings.github.io/unobstructed-hangul-regular-expression/" target="_blank">한글 자동완성을 위한 정규식</a> (<a href="https://github.com/bluewings/korean-regexp" target="_blank">https://github.com/bluewings/korean-regexp</a>)
 - <a href="https://github.com/ryuken73/node_chosung_search" target="_blank">한글 자동완성 및 초성검색 구현</a>
-- <a href="https://github.com/whdckszxxx/vue-korean-autocomplete" target="_blank">https://github.com/whdckszxxx/vue-korean-autocomplete</a>
+- <a href="https://github.com/whdckszxxx/vue-korean-autocomplete" target="_blank">vue-korean-autocomplete</a>
 
 그럼 이제 본격적으로 Svelte에서 `Hangul.js` 라이브러리를 이용한 한글 검색어 자동완성 페이지를 만들어보겠습니다.
 
@@ -31,7 +35,7 @@ $ npm install hangul-js
 
 ## 3. VSCode 실행해서 KoreanAutocomplete.svelte 작성하기
 ```bash
-5. $ code .
+$ code .
 ```
 #### 검색할 단어들은 편의상 src/word-list.js 파일에 담아둡니다.
 ```javascript
@@ -39,7 +43,7 @@ export const wordList = ['나물비빔밥', '오곡밥', '잡채밥', '콩나물
 ```
 
 #### KoreanAutocomplete.svelte 로직은 다음과 같이 작성했습니다.
-```HTML
+```html
 <script>
     import Hangul from 'hangul-js'; // Hangul.js 라이브러리는 이렇게 import하면 됩니다.
     import { wordList } from "./word-list.js"; // word-list.js 파일의 배열변수 wordList도 이렇게 import합니다.
@@ -74,7 +78,7 @@ export const wordList = ['나물비빔밥', '오곡밥', '잡채밥', '콩나물
 
 <div class="content">
     <div id="search_div">
-        음식 이름 검색 <input bind:value={inputText}>
+        검색어를 입력하세요: <input bind:value={inputText}>
     </div>
     <div>
         {#each matchedWords(inputText) as matched_word}
@@ -97,7 +101,7 @@ export const wordList = ['나물비빔밥', '오곡밥', '잡채밥', '콩나물
 ```
 
 이렇게 작성된 `KoreanAutocomplete.svelte` 컴포넌트를 `App.svelte`에서 import 하면 한글 검색어 자동완성 페이지를 완료할 수 있습니다.
-```HTML
+```html
 <script>
 	import KoreanAutocomplete from './KoreanAutocomplete.svelte';
 </script>
