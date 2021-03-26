@@ -116,7 +116,7 @@ export const wordList = ['나물비빔밥', '오곡밥', '잡채밥', '콩나물
 
 `<input bind:value={inputText}>` 여기서 `bind:value={inputText}` 요부분이 Svelte만의 syntax인데요. HTML의 `<input>`태그로 만들어진 입력란에서 글자를 타이핑하면, 그 검색어 문자열이 `inputText` 변수에 바인딩된다는 뜻입니다.
 
-vue에선 <a href="https://webruden.tistory.com/485" target="_blank">한글 입력시 커서가 위치한 음소나 음절이 바인딩되지 않는 문제</a>가 있다보니 <a href="https://github.com/whdckszxxx/vue-korean-autocomplete" target="_blank">vue-korean-autocomplete</a>에서 구현한 것처럼 키를 누르고 있는 상태에서도 입력한 음소나 음절을 바인딩하기 위한 코드가 복잡하게 들어가야 하는데요. svelte에선 이런 작업이 필요 없습니다. svelte에선 virtual DOM을 사용하지 않아서 한글 입력시 커서가 위치한 음소나 음절도 정확하게 바인딩되기 때문에 `bind:value={inputText}` 이거만으로도 한글 문자열을 알파벳 다루듯 처리할 수 있습니다. (이래서 svelte를 사랑하지 않을 수 없네요!)
+vue에선 <a href="https://webruden.tistory.com/485" target="_blank">한글 입력시 커서가 위치한 음소나 음절이 바인딩되지 않는 문제</a>가 있다보니 <a href="https://github.com/whdckszxxx/vue-korean-autocomplete" target="_blank">vue-korean-autocomplete</a>에서 구현한 것처럼 키를 누르고 있는 상태에서도 입력한 음소나 음절을 바인딩하기 위한 코드가 복잡하게 들어가기도 하는데요. <a href="https://webruden.tistory.com/485" target="_blank">여기</a>에선 비교적 간단하게 해결하던데 코드의 복잡성 차이가 이렇게 크게 발생하는 자세한 이유까진 살펴보지 않았지만, 아무튼 svelte에선 어떤 추가 작업도 필요 없습니다. svelte에선 virtual DOM을 사용하지 않아서 한글 입력시 커서가 위치한 음소나 음절도 정확하게 바인딩되기 때문에 `bind:value={inputText}` 이거만으로도 한글 문자열을 알파벳 다루듯 처리할 수 있습니다.
 
 `{#each matchedWords(inputText) as matched_word} ... {/each}` 이 코드도 Svelte만의 로직인데요. 바닐라 자바스크립트라면 `for (const matched_word in matchedWords(inputText)) { ... }` 이렇게 되겠죠. `{@html makeBold(matched_word.text)}` 이 코드는 검색된 문자열에서 검색어의 음소/음절 부분에 강조 표시한 결과를 화면에 표시하되, 강조 표시로 사용된 HTML 태그를 랜더링하기 위해 `@html`가 사용되었습니다.
 
